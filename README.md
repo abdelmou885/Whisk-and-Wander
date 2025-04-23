@@ -1,6 +1,6 @@
 # Whish and Wander Installation Guide
 - **HTML 5** 
-- **Composer**
+- **CSS**
 - **JavaScript (DOM manipulation, localStorage, etc.)**
 - **Git** (if cloning from a repository)
 

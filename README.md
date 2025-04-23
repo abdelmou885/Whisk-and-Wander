@@ -1,4 +1,4 @@
-# Whish and Wander Installation Guide
+# Whisk and Wander Installation Guide
 - **HTML 5** 
 - **CSS**
 - **JavaScript (DOM manipulation, localStorage, etc.)**

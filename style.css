@@ -1,1 +1,148 @@
-custom styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9f9f2;
+    color: #333;
+  }
+
+  header {
+    background-color: #f9f9f2;
+    padding: 1.5rem 2rem;
+  }
+
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .Logins button {
+    margin-left: 0.5rem;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .Logins .register {
+    background-color: #f7f7f7;
+  }
+
+  .header-top {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .header-top h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-top p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .search-bar input {
+    width: 40%;
+    padding: 0.5rem;
+  }
+
+  .search-bar button {
+    padding: 0.5rem 1rem;
+
+  }
+  .search{
+    background-color: #f0f0f0;
+  }
+
+  .filter {
+    background-color: #f0f0f0;
+  }
+
+  .categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+  }
+
+  .cat-card {
+    text-align: center;
+    width: 28%;
+  }
+
+  .cat-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .cat-card p {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .features-section {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .features-section img {
+    width: 35%;
+    border-radius: 10px;
+  }
+
+  .features-list div {
+    margin-bottom: 1rem;
+  }
+
+  .banner {
+    background-color: #fff0e6;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .banner h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .banner p {
+    margin-bottom: 1rem;
+  }
+
+  .banner button {
+    padding: 0.75rem 1.5rem;
+    background-color: #f26522;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+

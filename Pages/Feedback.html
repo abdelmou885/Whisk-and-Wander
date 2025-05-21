@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Whisk & Wander</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <img src="images/logo.png" alt="Whisk & Wander Logo" class="logo">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#">Categories</a>
+                <a href="#">Features</a>
+                <a href="#">About</a>
+            </nav>
+            <div class="Logins">
+                <button class="login">Sign In</button>
+                <button class="register">Sign Up</button>
+            </div>
+        </div>
+    </header>
 
+    <main class="feedback-container">
+        <h1 class="feedback-title">Share Your Feedback</h1>
+        <p class="feedback-subtitle">Help us improve Whisk & Wander</p>
+
+        <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Your Name (Optional)</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email (Optional)</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label>How would you rate your experience?</label>
+                <div class="rating-group">
+                    <div class="rating-option">
+                        <input type="radio" id="rating-5" name="rating" value="5">
+                        <label for="rating-5">Excellent</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="rating-4" name="rating" value="4">
+                        <label for="rating-4">Good</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="rating-3" name="rating" value="3">
+                        <label for="rating-3">Average</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="rating-2" name="rating" value="2">
+                        <label for="rating-2">Poor</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" id="rating-1" name="rating" value="1">
+                        <label for="rating-1">Terrible</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback">Your Feedback</label>
+                <textarea id="feedback" name="feedback" required placeholder="What did you like or dislike about our website?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="improvement">Suggestions for Improvement</label>
+                <textarea id="improvement" name="improvement" placeholder="How can we make it better?"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+
+        <div class="thank-you" id="thankYou">
+            <h2>Thank You!</h2>
+            <p>We appreciate your feedback and will use it to improve Whisk & Wander.</p>
+            <a href="index.html" class="submit-btn">Return Home</a>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('thankYou').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

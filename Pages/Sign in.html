@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Your Website</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Inline styles to ensure basic styling if CSS fails to load */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; }
+        header { padding: 1.5rem 2rem; }
+        .logo { width: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <img src="logo.png" alt="Logo" class="logo">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Categories</a>
+                <a href="#">Features</a>
+                <a href="#">About</a>
+            </nav>
+            <div class="Logins">
+                <button class="login active">Sign In</button>
+                <button class="register">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-form">
+            <h2>Welcome Back</h2>
+            <p>Sign in to access your account</p>
+
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="auth-button">Sign In</button>
+
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+
+                <button type="button" class="social-button google">
+                    <img src="google-icon.png" alt="Google"> Continue with Google
+                </button>
+
+                <button type="button" class="social-button facebook">
+                    <img src="facebook-icon.png" alt="Facebook"> Continue with Facebook
+                </button>
+
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up</a></p>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

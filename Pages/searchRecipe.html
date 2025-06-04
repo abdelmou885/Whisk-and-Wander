@@ -3,6 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Recipes - Wisk & Wander</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f26522;
+            --secondary: #ffc107;
+            --dark: #333;
+            --light: #f9f9f2;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--light);
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: auto;
+            padding: 0;
+            margin: 0;    
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0 auto;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 30px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Search Section */
+        .search-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .search-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .search-form {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            display: flex;
+        }
+        
+        #recipe-search {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .search-button {
+            padding: 0 20px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        .search-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .filter-btn {
+            padding: 5px 15px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+        
+        /* Results Section */
+        .results-section {
+            padding: 50px 0;
+        }
+        
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .recipe-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .recipe-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .recipe-content {
+            padding: 15px;
+        }
+        
+        .recipe-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--light);
+            padding: 40px 0 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .nav-buttons {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .recipes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .recipes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a class="logo" href="/">
+                    <img src="/Images/SearchRecipe/Logo.png" alt="Wisk & Wander">
+                </a>
+                
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/Pages/Recipes.html">Recipes</a></li>
+                        <li><a href="/team">Team</a></li>
+                    </ul>
+                    
+                    <div class="nav-buttons">
+                        <a href="/Pages/log in.html" class="btn">Login</a>
+                        <a href="/Pages/sign up.html" class="btn btn-primary">Register</a>
+                    </div>
+                </nav>
+                
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <div class="container">
+                <h1 class="search-title">Find Your Perfect Recipe</h1>
+                <form class="search-form">
+                    <input type="search" id="recipe-search" placeholder="Search for recipes...">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+                <div class="search-filters">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Meat</button>
+                    <button class="filter-btn">Vegetarian</button>
+                    <button class="filter-btn">Vegan</button>
+                    <button class="filter-btn">Pasta</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="container">
+                <h2>Search Results</h2>
+                <div class="recipes-grid">
+                    <article class="recipe-card">
+                        <img src="/Images/searchRecipe/Burger.jpg" alt="Crispy Chicken Burger" class="recipe-image">
+                        <div class="recipe-content">
+                            <h3>Crispy Chicken Burger</h3>
+                            <div class="recipe-meta">
+                                <span>★★★★★</span>
+                                <span>25 mins</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="recipe-card">
+                        <img src="/Images/searchRecipe/fruits.jpg" alt="Organic Fruit Salad" class="recipe-image">
+                        <div class="recipe-content">
+                            <h3>Organic Fruit Salad</h3>
+                            <div class="recipe-meta">
+                                <span>★★★★☆</span>
+                                <span>15 mins</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="recipe-card">
+                        <img src="/Images/searchRecipe/Pizza.jpg" alt="Pepperoni Pizza" class="recipe-image">
+                        <div class="recipe-content">
+                            <h3>Pepperoni Pizza</h3>
+                            <div class="recipe-meta">
+                                <span>★★★★★</span>
+                                <span>30 mins</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="recipe-card">
+                        <img src="/Images/searchRecipe/Steak.jpg" alt="Steak" class="recipe-image">
+                        <div class="recipe-content">
+                            <h3>Steak with Garlic Butter</h3>
+                            <div class="recipe-meta">
+                                <span>★★★★☆</span>
+                                <span>20 mins</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <img src="/Images/SearchRecipe/Logo.jpg" alt="Logo" width="70">
+                    <p>Cooking delicious recipes since 2025</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Pages/Recipes.html">Recipes</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Wisk & Wander. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/searchRecipes.css">
     <title>Search Recipes</title>
 </head>
@@ -69,3 +453,249 @@
                 <div class="recipe-details">
                     <p id="category">Pasta</p>
                     <a href="#"><h3>Creamy Mushroom Pasta</h3>
+                </div>
+            </div>
+    </section>
+    <footer>
+            <img src="/Images/SearchRecipe/Logo.jpg">
+            <div class="footerLinks">
+                <a href="/index.html">Home</a>
+                <a href="/Pages/Recipes.html">Recipes</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="footerLinks">
+                <div class="footerCopyWrites">
+                    <a href="#">© 2025 Wisk & Wander</a>
+                </div>
+                <div class="footerPolicies">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                    <a href="#">Cookies Policy</a>
+                </div>
+            </div>
+        </footer>
+</body> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search for delicious recipes across various categories">
+    <link rel="stylesheet" href="/searchRecipes.css">
+    <title>Search Recipes - Wisk & Wander</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a class="logo" href="/index.html" aria-label="Home">
+                <img src="/Images/searchRecipe/Logo.png" alt="Wisk & Wander Logo">
+            </a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/Pages/Recipes.html">Recipes</a></li>
+                    <li><a href="/team">Team</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="/Pages/log in.html" class="btn btn-secondary">Login</a>
+                    <a href="/Pages/sign up.html" class="btn btn-primary">Register</a>
+                </div>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="search-page">
+        <section class="search-section">
+            <div class="container">
+                <h1 class="search-title">Find Your Perfect Recipe</h1>
+                <div class="search-bar-container">
+                    <form role="search" class="search-form">
+                        <label for="recipe-search" class="visually-hidden">Search recipes</label>
+                        <input type="search" id="recipe-search" name="search" placeholder="Search for recipes..." aria-label="Search through recipes">
+                        <button type="submit" class="search-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span class="visually-hidden">Search</span>
+                        </button>
+                    </form>
+                    <div class="search-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="meat">Meat</button>
+                        <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+                        <button class="filter-btn" data-filter="vegan">Vegan</button>
+                        <button class="filter-btn" data-filter="pasta">Pasta</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="container">
+                <h2 class="section-title">Search Results</h2>
+                <div class="recipes-grid">
+                    <article class="recipe-card" data-category="meat">
+                        <a href="#" class="recipe-link">
+                            <div class="recipe-image-container">
+                                <img src="/Images/searchRecipe/Burger.jpg" alt="Crispy Chicken Burger with lettuce and sauce" loading="lazy">
+                                <span class="recipe-category">Meat</span>
+                            </div>
+                            <div class="recipe-content">
+                                <h3>Crispy Chicken Burger</h3>
+                                <div class="recipe-meta">
+                                    <div class="rating" aria-label="Rating: 5 out of 5 stars">
+                                        ★★★★★
+                                    </div>
+                                    <span class="time">25 mins</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="recipe-card" data-category="organic">
+                        <a href="#" class="recipe-link">
+                            <div class="recipe-image-container">
+                                <img src="/Images/searchRecipe/fruits.jpg" alt="Colorful organic fruit salad in a bowl" loading="lazy">
+                                <span class="recipe-category">Organic</span>
+                            </div>
+                            <div class="recipe-content">
+                                <h3>Organic Fruit Salad</h3>
+                                <div class="recipe-meta">
+                                    <div class="rating" aria-label="Rating: 4 out of 5 stars">
+                                        ★★★★☆
+                                    </div>
+                                    <span class="time">15 mins</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="recipe-card" data-category="pizza">
+                        <a href="#" class="recipe-link">
+                            <div class="recipe-image-container">
+                                <img src="/Images/searchRecipe/Pizza.jpg" alt="Pepperoni pizza with melted cheese" loading="lazy">
+                                <span class="recipe-category">Pizza</span>
+                            </div>
+                            <div class="recipe-content">
+                                <h3>Pepperoni Pizza</h3>
+                                <div class="recipe-meta">
+                                    <div class="rating" aria-label="Rating: 5 out of 5 stars">
+                                        ★★★★★
+                                    </div>
+                                    <span class="time">30 mins</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="recipe-card" data-category="meat">
+                        <a href="#" class="recipe-link">
+                            <div class="recipe-image-container">
+                                <img src="/Images/searchRecipe/Steak.jpg" alt="Juicy steak with garlic butter" loading="lazy">
+                                <span class="recipe-category">Meat</span>
+                            </div>
+                            <div class="recipe-content">
+                                <h3>Steak with Garlic Butter</h3>
+                                <div class="recipe-meta">
+                                    <div class="rating" aria-label="Rating: 4 out of 5 stars">
+                                        ★★★★☆
+                                    </div>
+                                    <span class="time">20 mins</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="recipe-card" data-category="pasta">
+                        <a href="#" class="recipe-link">
+                            <div class="recipe-image-container">
+                                <img src="/Images/searchRecipe/Pasta.jpg" alt="Creamy mushroom pasta in a white bowl" loading="lazy">
+                                <span class="recipe-category">Pasta</span>
+                            </div>
+                            <div class="recipe-content">
+                                <h3>Creamy Mushroom Pasta</h3>
+                                <div class="recipe-meta">
+                                    <div class="rating" aria-label="Rating: 4.5 out of 5 stars">
+                                        ★★★★☆
+                                    </div>
+                                    <span class="time">35 mins</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>Previous</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">Next</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="/index.html" aria-label="Home">
+                    <img src="/Images/SearchRecipe/Logo.jpg" alt="Wisk & Wander Logo">
+                </a>
+                <p>Cooking delicious recipes since 2025</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><span>FB</span></a>
+                    <a href="#" aria-label="Instagram"><span>IG</span></a>
+                    <a href="#" aria-label="Pinterest"><span>PIN</span></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-nav">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/Pages/Recipes.html">Recipes</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/team">Our Team</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-legal">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Cookies Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <form class="newsletter-form">
+                        <label for="newsletter-email" class="visually-hidden">Email address</label>
+                        <input type="email" id="newsletter-email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Wisk & Wander. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/searchRecipes.js"></script>
+</body>
+</html> -->

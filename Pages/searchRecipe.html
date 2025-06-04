@@ -6,69 +6,66 @@
     <link rel="stylesheet" href="/searchRecipes.css">
     <title>Search Recipes</title>
 </head>
-    <body>
-        <header>
-            <a class="logo" href="/index.html"><img src="/Images/searchRecipe/Logo.jpg" alt="Logo"></a>
-            <nav>
-                <div class="nav-links">
-                    <a href="/about">About</a>
-                    <a href="/Pages/Recipes.html">Recipe</a>
-                    <a href="/team">Team</a>
+<body>
+    <header>
+        <a class="logo" href="/index.html"><img src="/Images/searchRecipe/Logo.jpg" alt="Logo"></a>
+        <nav>
+            <div class="nav-links">
+                <a href="/about">About</a>
+                <a href="/Pages/Recipes.html">Recipe</a>
+                <a href="/team">Team</a>
+            </div>
+            <div class="nav-btn">
+                <button href="/Pages/log in.html">Login</button>
+                <button href="/Pages/sign up.html">Register</button>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="SearchBar">
+            <p>Search Results For:</p>
+            <div class="SearchBar" id="bar">
+                <input type="text" name="searchBar" placeholder="Search for recipes" size="30">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="recipes-container">
+            <div class="SearchResult">
+                <img src="/Images/searchRecipe/Burger.jpg" alt="Crispy Chicken Burger">
+                <div class="recipe-details">
+                    <p id="category">Meat</p>
+                    <a href="#"><h3>Crispy Chicken Burger</h3></a>
+                    <p>★★★★★</p>
                 </div>
-                <div class="nav-btn">
-                    <button href="/Pages/log in.html">Login</button>
-                    <button href="/Pages/sign up.html">Register</button>
-                </div>
-            </nav>
-        </header>
-        <section>
-            <div class="SearchBar">
-                <p>Search Results For:</p>
-                <div class="SearchBar" id="bar">
-                    <input type="text" name="searchBar" placeholder="Search for recipes" size="30">
-                    <button>Search</button>
+            </div>
+            <div class="SearchResult">
+                <img src="/Images/searchRecipe/fruits.jpg" alt="Organic Fruit Salad">
+                <div class="recipe-details">
+                    <p id="category">Organic</p>
+                    <a href="#"><h3>Organic Fruit Salad</h3></a>
+                    <p>★★★★☆</p>
                 </div>
             </div>
-        </section>
-        <section>
             <div class="SearchResult">
-                <img src="/Images/searchRecipe/Burger.jpg" alt="Result image">
-                <p id="category">Meat</p>
-                <a href="#"><h3>Crispy Chicken Burger</h3></a>
-                <p>***** Ratings</p>
-            </div>
-            <div class="SearchResult">
-                <img src="/Images/searchRecipe/fruits.jpg" alt="Result image">
-                <p id="category">Organic</p>
-                <a href="#"><h3>Organic Fruit Salad</h3></a>
-                <p>***** Ratings</p>
+                <img src="/Images/searchRecipe/Pizza.jpg" alt="Pepperoni Pizza">
+                <div class="recipe-details">
+                    <p id="category">Pizza</p>
+                    <a href="#"><h3>Pepperoni Pizza</h3></a>
+                    <p>★★★★★</p>
+                </div>
             </div>
             <div class="SearchResult">
-                <img src="/Images/searchRecipe/Pizza.jpg" alt="Result image">
-                <p id="category">Pizza</p>
-                <a href="#"><h3>Pepparoni Pizza</h3></a>
-                <p>***** Ratings</p>
+                <img src="/Images/searchRecipe/Steak.jpg" alt="Steak">
+                <div class="recipe-details">
+                    <p id="category">Meat</p>
+                    <a href="#"><h3>Steak with Garlic Butter</h3></a>
+                    <p>★★★★☆</p>
+                </div>
             </div>
             <div class="SearchResult">
-                <img src="/Images/searchRecipe/Steak.jpg" alt="Result image">
-                <p id="category">Meat</p>
-                <a href="#"><h3>Steak</h3></a>
-                <p>***** Ratings</p>
-            </div>
-        </section>
-        <footer>
-            <img id="logo" src="/Images/searchRecipe/Logo.jpg">
-            <div class="footerPages">
-                <a href="/index.html">Home</a>
-                <a href="/Pages/Recipes.html">Recipes</a>
-                <a href="#">About Us</a>
-            </div>
-            <div class="footerLinks">
-                <a href="#">© Copyright Wisk & Wander</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms and Conditions</a>
-                <a href="#">Cookies Policy</a>
-            </div>
-        </footer>
-    </body>
-</html>
+                <img src="/Images/searchRecipe/Pasta.jpg" alt="Creamy Pasta">
+                <div class="recipe-details">
+                    <p id="category">Pasta</p>
+                    <a href="#"><h3>Creamy Mushroom Pasta</h3>

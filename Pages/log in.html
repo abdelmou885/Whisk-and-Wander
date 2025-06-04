@@ -1,1 +1,77 @@
-log in page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Your Website</title>
+   <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <img src="logo.png" alt="Logo" class="logo">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Categories</a>
+                <a href="#">Features</a>
+                <a href="#">About</a>
+            </nav>
+            <div class="Logins">
+                <button class="login">Sign In</button>
+                <button class="register active">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-form">
+            <h2>Create Your Account</h2>
+            <p>Join us to get started</p>
+            
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Create a password" minlength="8">
+                    <div class="password-hint">Minimum 8 characters</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                </div>
+                
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <button type="submit" class="auth-button">Sign Up</button>
+                
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                
+                <button type="button" class="social-button google">
+                    <img src="google-icon.png" alt="Google"> Continue with Google
+                </button>
+                
+                <button type="button" class="social-button facebook">
+                    <img src="facebook-icon.png" alt="Facebook"> Continue with Facebook
+                </button>
+                
+                <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

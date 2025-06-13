@@ -1,164 +1,197 @@
+/* Reset all elements to remove default spacing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
-  body {
+/* Basic body styling */
+body {
     font-family: 'Segoe UI', sans-serif;
     background: #f9f9f2;
     color: #333;
-  }
+}
 
-  header {
+/* HEADER SECTION */
+header {
     background-color: #f9f9f2;
-    padding: 1.5rem 2rem;
-  }
+    padding: 20px 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
 
-  .top-nav {
+/* Top navigation bar */
+.top-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .logo {
+/* Logo styling */
+.logo {
     width: 50px;
-  }
+}
 
-  nav a {
-    margin: 0 1rem;
+/* Navigation links */
+nav a {
+    margin: 0 15px;
     text-decoration: none;
     color: #333;
     font-weight: 500;
-  }
+}
 
-  .Logins button {
-    margin-left: 0.5rem;
+nav a:hover {
+    color: #f26522;
+}
+
+/* Navigation list for recipe pages */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+/* Login buttons */
+.Logins button {
+    margin-left: 8px;
     padding: 6px 12px;
     border: 1px solid #ccc;
     background-color: white;
     cursor: pointer;
-  }
+}
 
-  .Logins .register {
+.Logins .register {
     background-color: #f7f7f7;
-  }
+}
 
-  .header-top {
+.Logins .active {
+    background-color: #f26522;
+    color: white;
+    border-color: #f26522;
+}
+
+/* HOMEPAGE HEADER CONTENT */
+.header-top {
     text-align: center;
-    margin-top: 2rem;
-  }
+    margin-top: 30px;
+}
 
-  .header-top h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
+.header-top h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
 
-  .header-top p {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
+.header-top p {
+    font-size: 16px;
+    margin-bottom: 25px;
+}
 
-  .search-bar {
+/* Search bar */
+.search-bar {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
-  }
+    gap: 8px;
+}
 
-  .search-bar input {
+.search-bar input {
     width: 40%;
-    padding: 0.5rem;
-  }
+    padding: 8px;
+}
 
-  .search-bar button {
-    padding: 0.5rem 1rem;
+.search-bar button {
+    padding: 8px 15px;
+}
 
-  }
-  .search{
+.search {
     background-color: #f0f0f0;
-  }
+}
 
-  .filter {
+.filter {
     background-color: #f0f0f0;
-  }
+}
 
-  .categories {
+/* CATEGORIES SECTION */
+.categories {
     display: flex;
     justify-content: space-around;
-    padding: 2rem;
-  }
+    padding: 30px;
+}
 
-  .cat-card {
+.cat-card {
     text-align: center;
     width: 28%;
-  }
+}
 
-  .cat-card img {
+.cat-card img {
     width: 100%;
     border-radius: 8px;
-    margin-bottom: 0.5rem;
-  }
+    margin-bottom: 8px;
+}
 
-  .cat-card p {
+.cat-card p {
     font-weight: bold;
-    font-size: 1rem;
-  }
+    font-size: 16px;
+}
 
-  .features-section {
+/* FEATURES SECTION */
+.features-section {
     display: flex;
     align-items: center;
-    padding: 2rem;
-    gap: 2rem;
-  }
+    padding: 30px;
+    gap: 30px;
+}
 
-  .features-section img {
+.features-section img {
     width: 35%;
     border-radius: 10px;
-  }
+}
 
-  .features-list div {
-    margin-bottom: 1rem;
-  }
+.features-list div {
+    margin-bottom: 15px;
+}
 
-  .banner {
+/* BANNER SECTION */
+.banner {
     background-color: #fff0e6;
-    padding: 2rem;
+    padding: 30px;
     text-align: center;
-    margin-top: 2rem;
-  }
+    margin-top: 30px;
+}
 
-  .banner h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
+.banner h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
 
-  .banner p {
-    margin-bottom: 1rem;
-  }
+.banner p {
+    margin-bottom: 15px;
+}
 
-  .banner button {
-    padding: 0.75rem 1.5rem;
+.banner button {
+    padding: 12px 25px;
     background-color: #f26522;
     color: white;
     border: none;
     cursor: pointer;
     font-weight: bold;
     border-radius: 5px;
-  }
+}
 
-  /* From HERE */
-  /* Auth Pages Styles */
+/* LOGIN/REGISTER PAGES */
 .auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 200px);
-    padding: 2rem;
+    min-height: 500px;
+    padding: 30px;
 }
 
 .auth-form {
     background-color: white;
-    padding: 2.5rem;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -166,34 +199,37 @@
 }
 
 .auth-form h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 28px;
+    margin-bottom: 8px;
     color: #333;
 }
 
 .auth-form p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 25px;
     color: #666;
 }
 
+/* Form input groups */
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     font-weight: 500;
     color: #444;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea,
+.form-group select {
     width: 100%;
-    padding: 0.75rem;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .form-group input:focus {
@@ -201,11 +237,23 @@
     outline: none;
 }
 
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Password hint and forgot password link */
+.password-hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
 .forgot-password {
     display: block;
     text-align: right;
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
+    margin-top: 8px;
+    font-size: 14px;
     color: #666;
     text-decoration: none;
 }
@@ -214,62 +262,38 @@
     color: #f26522;
 }
 
-.password-hint {
-    font-size: 0.75rem;
-    color: #666;
-    margin-top: 0.25rem;
-}
-
+/* Auth buttons */
 .auth-button {
     width: 100%;
-    padding: 0.75rem;
+    padding: 12px;
     background-color: #f26522;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 0.5rem;
+    margin-top: 8px;
 }
 
 .auth-button:hover {
     background-color: #e05b1d;
 }
 
-.auth-divider {
-    display: flex;
-    align-items: center;
-    margin: 1.5rem 0;
-    color: #999;
-}
-
-.auth-divider::before,
-.auth-divider::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #ddd;
-}
-
-.auth-divider span {
-    padding: 0 1rem;
-}
-
+/* Social login buttons */
 .social-button {
     width: 100%;
-    padding: 0.75rem;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 0.75rem;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 8px;
     background-color: white;
 }
 
@@ -282,9 +306,29 @@
     height: 20px;
 }
 
+/* Divider between login methods */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+    color: #999;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.auth-divider span {
+    padding: 0 15px;
+}
+
+/* Switch between login/register */
 .auth-switch {
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 25px;
     color: #666;
 }
 
@@ -298,6 +342,7 @@
     text-decoration: underline;
 }
 
+/* Checkbox styling */
 .checkbox {
     display: flex;
     align-items: center;
@@ -305,24 +350,18 @@
 
 .checkbox input {
     width: auto;
-    margin-right: 0.5rem;
+    margin-right: 8px;
 }
 
 .checkbox label {
     margin-bottom: 0;
 }
 
-.Logins .active {
-    background-color: #f26522;
-    color: white;
-    border-color: #f26522;
-}
-
-/* ===== Feedback Page Styles ===== */
+/* FEEDBACK PAGE */
 .feedback-container {
     max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
+    margin: 30px auto;
+    padding: 30px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -330,39 +369,26 @@
 
 .feedback-title {
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
     color: #333;
 }
 
 .feedback-subtitle {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 25px;
     color: #666;
 }
 
 .feedback-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 25px;
 }
 
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
+/* Rating options */
 .rating-group {
     display: flex;
-    gap: 1rem;
+    gap: 15px;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -370,18 +396,18 @@
 .rating-option {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
 }
 
+/* Submit button */
 .submit-btn {
     background-color: #f26522;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 12px 25px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s;
     align-self: center;
 }
 
@@ -389,47 +415,32 @@
     background-color: #e05b1d;
 }
 
+/* Thank you message */
 .thank-you {
     text-align: center;
-    padding: 2rem;
+    padding: 30px;
     display: none;
 }
 
 .thank-you h2 {
     color: #f26522;
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .feedback-container {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-
-    .rating-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-}
-
-/* ===== RECIPE PAGE STYLES ===== */
-
-/* Main content layout for recipe pages */
+/* RECIPE PAGES */
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 30px;
 }
 
-/* Recipe header section */
+/* Recipe header with image and title */
 .recipe-header {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 30px;
+    margin-bottom: 30px;
     background: white;
-    padding: 2rem;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -452,30 +463,30 @@ main {
 }
 
 .recipe-intro h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 40px;
+    margin-bottom: 15px;
     color: #333;
 }
 
 .recipe-intro p {
-    font-size: 1.1rem;
+    font-size: 18px;
     color: #666;
 }
 
-/* Recipe meta information */
+/* Recipe timing information */
 .recipe-meta {
     background: white;
-    padding: 2rem;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
 }
 
 .content-list {
     background-color: #fff0e6;
-    padding: 1rem;
+    padding: 15px;
     border-radius: 5px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 25px;
     text-align: center;
     font-weight: bold;
     color: #f26522;
@@ -483,13 +494,13 @@ main {
 
 .recipe-times {
     display: flex;
-    gap: 2rem;
+    gap: 30px;
     justify-content: space-around;
 }
 
 .time-block {
     text-align: center;
-    padding: 1rem;
+    padding: 15px;
     background-color: #f9f9f2;
     border-radius: 8px;
     flex: 1;
@@ -497,25 +508,25 @@ main {
 
 .time-block h4 {
     color: #f26522;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .time-block p {
-    font-size: 1.2rem;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
 }
 
-/* Recipe servings */
+/* Recipe servings info */
 .recipe-servings {
     text-align: center;
-    margin: 1rem 0;
+    margin: 15px 0;
     color: #666;
     background: white;
-    padding: 1rem;
+    padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
@@ -523,16 +534,16 @@ main {
 /* Ingredients section */
 .ingredients {
     background: white;
-    padding: 2rem;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
 }
 
 .ingredients h2 {
     color: #f26522;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-size: 28px;
 }
 
 .ingredient-checklist {
@@ -540,7 +551,7 @@ main {
 }
 
 .ingredient-checklist li {
-    padding: 0.75rem 0;
+    padding: 12px 0;
     border-bottom: 1px solid #f0f0f0;
     display: flex;
     align-items: center;
@@ -551,13 +562,13 @@ main {
 }
 
 .ingredient-checklist input[type="checkbox"] {
-    margin-right: 1rem;
+    margin-right: 15px;
     transform: scale(1.2);
     accent-color: #f26522;
 }
 
 .ingredient-checklist label {
-    font-size: 1.1rem;
+    font-size: 18px;
     cursor: pointer;
     flex: 1;
 }
@@ -565,22 +576,22 @@ main {
 /* Directions section */
 .directions {
     background: white;
-    padding: 2rem;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
 }
 
 .directions h2 {
     color: #f26522;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-size: 28px;
 }
 
 .steps h2 {
     color: #333;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-size: 22px;
 }
 
 .steps ol {
@@ -589,8 +600,8 @@ main {
 
 .steps li {
     counter-increment: step-counter;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    margin-bottom: 30px;
+    padding: 25px;
     background-color: #f9f9f2;
     border-radius: 8px;
     border-left: 4px solid #f26522;
@@ -598,12 +609,13 @@ main {
 
 .steps h3 {
     color: #f26522;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-size: 20px;
     display: flex;
     align-items: center;
 }
 
+/* Step numbers in circles */
 .steps h3::before {
     content: counter(step-counter);
     background-color: #f26522;
@@ -614,20 +626,20 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
+    margin-right: 15px;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 .steps p {
-    font-size: 1.1rem;
+    font-size: 18px;
     line-height: 1.8;
 }
 
-/* Brand logo for recipe pages */
+/* Brand logo */
 .brand-logo {
     text-align: center;
-    margin: 2rem 0;
+    margin: 30px 0;
 }
 
 .brand-logo img {
@@ -637,57 +649,47 @@ main {
     border-radius: 50%;
 }
 
-/* Footer styles for recipe pages */
+/* Footer */
 footer {
     background-color: #333;
     color: white;
-    padding: 2rem;
+    padding: 30px;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 30px;
 }
 
 .footer-nav {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 30px;
 }
 
 .footer-nav a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .footer-nav a:hover {
     color: #f26522;
 }
 
-/* Navigation adjustments for recipe pages */
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-nav ul li {
-    display: inline;
-}
-
-/* Header adjustments for recipe pages */
-header {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-/* Hover effects for recipe navigation */
-nav a:hover,
-nav a.favorites {
-    color: #f26522;
-}
-
-/* Responsive Design for Recipe Pages */
+/* MOBILE RESPONSIVE DESIGN */
 @media (max-width: 768px) {
+    /* Feedback page adjustments */
+    .feedback-container {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    .rating-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Recipe page adjustments */
     main {
-        padding: 1rem;
+        padding: 15px;
     }
 
     .recipe-header {
@@ -696,26 +698,25 @@ nav a.favorites {
 
     .recipe-times {
         flex-direction: column;
-        gap: 1rem;
+        gap: 15px;
     }
 
     nav ul {
         flex-direction: column;
-        gap: 1rem;
+        gap: 15px;
     }
 
     .recipe-intro h1 {
-        font-size: 2rem;
+        font-size: 32px;
     }
 
     .time-block {
-        margin-bottom: 1rem;
+        margin-bottom: 15px;
     }
 
     .steps h3::before {
         width: 25px;
         height: 25px;
-        font-size: 0.8rem;
+        font-size: 12px;
     }
 }
-

@@ -169,56 +169,16 @@
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="/index.html" aria-label="Home">
-                    <img src="/Images/SearchRecipe/Logo.jpg" alt="Wisk & Wander Logo">
-                </a>
-                <p>Cooking delicious recipes since 2025</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><span>FB</span></a>
-                    <a href="#" aria-label="Instagram"><span>IG</span></a>
-                    <a href="#" aria-label="Pinterest"><span>PIN</span></a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <div class="footer-nav">
-                    <h3>Navigation</h3>
-                    <ul>
-                        <li><a href="/index.html">Home</a></li>
-                        <li><a href="/Pages/Recipes.html">Recipes</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/team">Our Team</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-legal">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li><a href="#">Cookies Policy</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-newsletter">
-                    <h3>Stay Updated</h3>
-                    <form class="newsletter-form">
-                        <label for="newsletter-email" class="visually-hidden">Email address</label>
-                        <input type="email" id="newsletter-email" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Wisk & Wander. All rights reserved.</p>
-        </div>
+    <footer class="main-footer" id="main-footer">
+        <script>
+            fetch('/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('main-footer').innerHTML = data;
+                });
+        </script>
     </footer>
 
     <script src="/searchRecipes.js"></script>
 </body>
-</html> -->
+</html> 

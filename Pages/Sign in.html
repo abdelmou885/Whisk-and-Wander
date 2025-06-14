@@ -64,5 +64,14 @@
             </form>
         </div>
     </main>
+    <footer class="main-footer" id="main-footer">
+        <script>
+            fetch('/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('main-footer').innerHTML = data;
+                });
+        </script>
+    </footer>
 </body>
 </html>

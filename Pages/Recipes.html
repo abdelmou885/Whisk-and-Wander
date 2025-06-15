@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fluffiest Pancake Ever!! - Whisk & Wander</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../style.css" />
 
 </head>
 <body>
     <header>
-        <div class="top-nav">
+        <div id="header-container">
+            <script>
+            // Load header
+            fetch("../header.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                })
+                .catch(err => {
+                    console.error('Failed to load header:', err);
+                });
+            </script>
+        </div>
+        <!-- <div class="top-nav">
             <img src="logo.png" alt="Logo" class="logo">
             <nav>
                 <a href="#">Home</a>
@@ -21,7 +34,7 @@
                 <button class="login">Sign In</button>
                 <button class="register active">Sign Up</button>
             </div>
-        </div>
+        </div> -->
     </header>
 
     <main>
@@ -89,13 +102,7 @@
                 </ol>
             </div>
         </section>
-
-        <div class="brand-logo">
-            <img src="" alt="Whisk & Wander logo">
-        </div>
-    </main>
-
-    <footer class="main-footer" id="main-footer">
+        <footer class="main-footer" id="main-footer">
         <script>
             fetch('/footer.html')
                 .then(response => response.text())
@@ -104,5 +111,6 @@
                 });
         </script>
     </footer>
+    </main>
 </body>
 </html>

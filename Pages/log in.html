@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Your Website</title>
-   <link rel="stylesheet" href="/style.css" />
+   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
     <header>
-        <div class="top-nav">
+        <div id="header-container">
+            <script>
+            // Load header
+            fetch("../header.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                })
+                .catch(err => {
+                    console.error('Failed to load header:', err);
+                });
+            </script>
+        </div>
+        <!-- <div class="top-nav">
             <img src="logo.png" alt="Logo" class="logo">
             <nav>
                 <a href="#">Home</a>
@@ -20,7 +33,7 @@
                 <button class="login">Sign In</button>
                 <button class="register active">Sign Up</button>
             </div>
-        </div>
+        </div> -->
     </header>
 
     <main class="auth-container">
@@ -28,7 +41,7 @@
             <h2>Create Your Account</h2>
             <p>Join us to get started</p>
             
-            <form action="/signup" method="POST">
+            <form action="../signup" method="POST">
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
@@ -62,11 +75,11 @@
                 </div>
                 
                 <button type="button" class="social-button google">
-                    <img src="google-icon.png" alt="Google"> Continue with Google
+                    <img src="../Images/google-icon.png" alt=""> Continue with Google
                 </button>
                 
                 <button type="button" class="social-button facebook">
-                    <img src="facebook-icon.png" alt="Facebook"> Continue with Facebook
+                    <img src="../Images/facebook-icon.png" alt=""> Continue with Facebook
                 </button>
                 
                 <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>

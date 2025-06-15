@@ -13,49 +13,49 @@ body {
 }
 
 /* HEADER SECTION */
-header {
+/* header {
     background-color: #f9f9f2;
     padding: 20px 30px;
     border-bottom: 1px solid #e0e0e0;
-}
+} */
 
 /* Top navigation bar */
-.top-nav {
+/* .top-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 /* Logo styling */
-.logo {
+/* .logo {
     width: 50px;
-}
+} */
 
 /* Navigation links */
-nav a {
+/* nav a {
     margin: 0 15px;
     text-decoration: none;
     color: #333;
     font-weight: 500;
-}
+} */
 
-nav a:hover {
-    color: #f26522;
-}
+/* nav a:hover {
+    color: #000000;
+} */
 
 /* Navigation list for recipe pages */
-nav ul {
+/* nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
-}
+} */
 
-nav ul li {
+/* nav ul li {
     display: inline;
-}
+} */
 
 /* Login buttons */
-.Logins button {
+/* .Logins button {
     margin-left: 8px;
     padding: 6px 12px;
     border: 1px solid #ccc;
@@ -71,10 +71,41 @@ nav ul li {
     background-color: #f26522;
     color: white;
     border-color: #f26522;
+} */
+
+/* BUTTON STYLES */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #e05b1e;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* HOMEPAGE HEADER CONTENT */
-.header-top {
+/* .header-top {
     text-align: center;
     margin-top: 30px;
 }
@@ -87,10 +118,80 @@ nav ul li {
 .header-top p {
     font-size: 16px;
     margin-bottom: 25px;
+} */
+
+/* SEARCH SECTION */
+/* .search-section {
+    padding: 50px 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('/Images/searchRecipe/pattern-bg.jpg') center/cover no-repeat;
+    text-align: center;
 }
 
+.search-title {
+    font-size: 40px;
+    margin-bottom: 25px;
+    color: var(--dark);
+}
+
+.search-form {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#recipe-search {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    font-size: 16px;
+}
+
+.search-button {
+    padding: 0 25px;
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-button:hover {
+    background-color: #e05b1e;
+} */
+
+/* Search filter buttons */
+/* .search-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    background-color: transparent;
+    border: 1px solid var(--gray);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+    background-color: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+} */
+
 /* Search bar */
-.search-bar {
+/* .search-bar {
     display: flex;
     justify-content: center;
     gap: 8px;
@@ -111,10 +212,10 @@ nav ul li {
 
 .filter {
     background-color: #f0f0f0;
-}
+} */
 
 /* CATEGORIES SECTION */
-.categories {
+/* .categories {
     display: flex;
     justify-content: space-around;
     padding: 30px;
@@ -134,10 +235,10 @@ nav ul li {
 .cat-card p {
     font-weight: bold;
     font-size: 16px;
-}
+} */
 
 /* FEATURES SECTION */
-.features-section {
+/* .features-section {
     display: flex;
     align-items: center;
     padding: 30px;
@@ -151,10 +252,10 @@ nav ul li {
 
 .features-list div {
     margin-bottom: 15px;
-}
+} */
 
 /* BANNER SECTION */
-.banner {
+/* .banner {
     background-color: #fff0e6;
     padding: 30px;
     text-align: center;
@@ -178,7 +279,7 @@ nav ul li {
     cursor: pointer;
     font-weight: bold;
     border-radius: 5px;
-}
+} */
 
 /* LOGIN/REGISTER PAGES */
 .auth-container {
@@ -650,7 +751,7 @@ main {
 }
 
 /* Footer */
-footer {
+/* footer {
     background-color: #333;
     color: white;
     padding: 30px;
@@ -671,7 +772,7 @@ footer {
 
 .footer-nav a:hover {
     color: #f26522;
-}
+} */
 
 /* MOBILE RESPONSIVE DESIGN */
 @media (max-width: 768px) {

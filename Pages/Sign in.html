@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - Your Website</title>
-    <link rel="stylesheet" href="/style.css">
-    <style>
-        /* Inline styles to ensure basic styling if CSS fails to load */
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; }
-        header { padding: 1.5rem 2rem; }
-        .logo { width: 50px; }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
-        <div class="top-nav">
+        <div id="header-container">
+            <script>
+            // Load header
+            fetch("../header.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                })
+                .catch(err => {
+                    console.error('Failed to load header:', err);
+                });
+            </script>
+        </div>
+        <!-- <div class="top-nav">
             <img src="logo.png" alt="Logo" class="logo">
             <nav>
                 <a href="#">Home</a>
@@ -26,7 +33,7 @@
                 <button class="login">Sign In</button>
                 <button class="register active">Sign Up</button>
             </div>
-        </div>
+        </div> -->
     </header>
 
     <main class="auth-container">
@@ -53,11 +60,11 @@
                 </div>
 
                 <button type="button" class="social-button google">
-                    <img src="google-icon.png" alt="Google"> Continue with Google
+                    <img src="../Images/google-icon.png" alt=""> Continue with Google
                 </button>
 
                 <button type="button" class="social-button facebook">
-                    <img src="facebook-icon.png" alt="Facebook"> Continue with Facebook
+                    <img src="../Images/facebook-icon.png" alt=""> Continue with Facebook
                 </button>
 
                 <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up</a></p>

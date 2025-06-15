@@ -4,33 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Whisk & Wondeer</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../index-styles.css" />
 </head>
 <body>
   <header>
-    <div class="top-nav">
-      <img src="https://i.imgur.com/3yHkHUF.png" alt="Logo" class="logo" />
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Recipe</a>
-        <a href="#">Team</a>
-      </nav>
-      <div class="Logins">
-        <button>Login</button>
-        <button class="register">Register</button>
-      </div>
+    <div id="header-container">
+      <script>
+      // Load header
+      fetch("../header.html")
+          .then(response => response.text())
+          .then(html => {
+              document.getElementById('header-container').innerHTML = html;
+          })
+          .catch(err => {
+              console.error('Failed to load header:', err);
+          });
+      </script>
     </div>
 
     <div class="header-top">
       <h1>Welcome to Whisk & Wondeer</h1>
       <p>Bringing flavors to life, one recipe at a time — because every meal tells a story.</p>
-      <div class="search-bar">
-        <input type="text" placeholder="Type a dish, ingredient, or cuisine..." />
-        <button class="search">Search</button>
-        <button class="filter">Filter</button>
+      <div class="search-bar-container">
+          <form role="search" class="search-form">
+              <label for="recipe-search" class="visually-hidden">Search recipes</label>
+              <input type="search" id="recipe-search" name="search" placeholder="Search for recipes..." aria-label="Search through recipes">
+              <button type="submit" class="search-button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <span class="visually-hidden">Search</span>
+              </button>
+          </form>
+          <div class="search-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="meat">Meat</button>
+              <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+              <button class="filter-btn" data-filter="vegan">Vegan</button>
+              <button class="filter-btn" data-filter="pasta">Pasta</button>
+          </div>
       </div>
-    </div>
   </header>
 
   <section class="categories">
@@ -64,14 +78,112 @@
     </div>
     <button>Explore Recipes</button>
   </section>
+
+  <div class="container">
+    <section class="intro">
+      <div class="intro-text">
+        <h2>Wide Range of Recipes</h2>
+        <p>Explore a diverse collection of recipes from around the world.</p>
+        <h2>Step-by-Step Instructions</h2>
+        <p>Detailed instructions to guide you through each recipe with ease.</p>
+        <h2>Save Your Favorites</h2>
+        <p>Bookmark your favorite recipes to easily access them later.</p>
+      </div>
+      <div class="intro-image">
+        <img src="https://cdn.pixabay.com/photo/2021/07/06/11/52/muesli-6391402_1280.jpg"
+        
+        
+        alt=" Image" />
+      </div>
+    </section>
+
+    <section class="discover">
+      <div class="discover-text">
+        <h2>Discover the Power of Our Products</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+        <button class="main-button">Main section</button>
+      </div>
+      <div class="steps">
+        <div class="step step-1">
+          <div>
+            <h3>Gather Ingredients</h3>
+            <p>Collect all the necessary ingredients for the recipe.</p>
+          </div>
+          <span>01</span>
+        </div>
+        <div class="step step-2">
+          <div>
+            <h3>Prepare Ingredients</h3>
+            <p>Wash, chop, and measure out all the ingredients as needed.</p>
+          </div>
+          <span>02</span>
+        </div>
+        <div class="step step-3">
+          <div>
+            <h3>Cooking Instructions</h3>
+            <p>Follow the step-by-step cooking instructions to prepare the dish.</p>
+          </div>
+          <span>03</span>
+        </div>
+        <div class="step step-4">
+          <div>
+            <h3>Serve and Enjoy</h3>
+            <p>Plate the dish beautifully and savor the delicious meal you’ve prepared.</p>
+          </div>
+          <span>04</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <strong>John Smith</strong><br />Food Blogger<br />
+          <p>5 stars</p>
+        </div>
+        <div class="testimonial">
+          <strong>Emily Johnson</strong><br />Home Cook<br />
+          <p>I love the variety of recipes available on this site...</p>
+        </div>
+        <div class="testimonial">
+          <strong>David Lee</strong><br />Chef<br />
+          <p>The tips and tricks shared here helped me a lot.</p>
+        </div>
+        <div class="testimonial">
+          <strong>Sarah Miller</strong><br />Food Enthusiast<br />
+          <p>The creativity and organization improved my skills.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-us">
+      <h2>Contact Us</h2>
+      <div class="contact-boxes">
+        <div class="contact-box">
+          <img src="https://cdn.pixabay.com/photo/2016/04/21/22/50/pizza-1344720_1280.jpg"
+          
+          alt="Email" />
+          <p><strong>Email:</strong><br />For any inquiries or feedback, feel free to drop us an email.</p>
+        </div>
+        <div class="contact-box">
+          <img src="https://cdn.pixabay.com/photo/2015/11/08/07/37/eat-1033210_1280.jpg"
+          
+          
+          alt="Phone" />
+          <p><strong>Phone:</strong><br />Give us a call during our office hours for immediate assistance.</p>
+        </div>
+      </div>
+    </section>
+  </div>
   <footer class="main-footer" id="main-footer">
-        <script>
-            fetch('/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('main-footer').innerHTML = data;
-                });
-        </script>
-    </footer>
+    <script>
+        fetch("../footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-footer').innerHTML = data;
+            });
+      </script>
+  </footer>
 </body>
 </html>

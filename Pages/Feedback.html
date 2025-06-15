@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - Whisk & Wander</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
-        <div class="top-nav">
+        <div id="header-container">
+            <script>
+            // Load header
+            fetch("../header.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                })
+                .catch(err => {
+                    console.error('Failed to load header:', err);
+                });
+            </script>
+        </div>
+        <!-- <div class="top-nav">
             <img src="images/logo.png" alt="Whisk & Wander Logo" class="logo">
             <nav>
                 <a href="index.html">Home</a>
@@ -20,7 +33,7 @@
                 <button class="login">Sign In</button>
                 <button class="register">Sign Up</button>
             </div>
-        </div>
+        </div> -->
     </header>
 
     <main class="feedback-container">

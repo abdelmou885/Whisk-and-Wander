@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Search for delicious recipes across various categories">
-    <link rel="stylesheet" href="/searchRecipes.css">
+    <link rel="stylesheet" href="../searchRecipes.css">
     <title>Search Recipes - Wisk & Wander</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,26 +13,18 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="header-container">
-            <a class="logo" href="/index.html" aria-label="Home">
-                <img src="/Images/searchRecipe/Logo.png" alt="Wisk & Wander Logo">
-            </a>
-            <nav aria-label="Main navigation">
-                <ul class="nav-links">
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/Pages/Recipes.html">Recipes</a></li>
-                    <li><a href="/team">Team</a></li>
-                </ul>
-                <div class="nav-buttons">
-                    <a href="/Pages/log in.html" class="btn btn-secondary">Login</a>
-                    <a href="/Pages/sign up.html" class="btn btn-primary">Register</a>
-                </div>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+        <div id="header-container">
+            <script>
+            // Load header
+            fetch("../header.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
+                })
+                .catch(err => {
+                    console.error('Failed to load header:', err);
+                });
+            </script>
         </div>
     </header>
 
@@ -70,7 +62,7 @@
                     <article class="recipe-card" data-category="meat">
                         <a href="#" class="recipe-link">
                             <div class="recipe-image-container">
-                                <img src="/Images/searchRecipe/Burger.jpg" alt="Crispy Chicken Burger with lettuce and sauce" loading="lazy">
+                                <img src="../Images/searchRecipe/Burger.jpg" alt="Crispy Chicken Burger with lettuce and sauce" loading="lazy">
                                 <span class="recipe-category">Meat</span>
                             </div>
                             <div class="recipe-content">
@@ -88,7 +80,7 @@
                     <article class="recipe-card" data-category="organic">
                         <a href="#" class="recipe-link">
                             <div class="recipe-image-container">
-                                <img src="/Images/searchRecipe/fruits.jpg" alt="Colorful organic fruit salad in a bowl" loading="lazy">
+                                <img src="../Images/searchRecipe/fruits.jpg" alt="Colorful organic fruit salad in a bowl" loading="lazy">
                                 <span class="recipe-category">Organic</span>
                             </div>
                             <div class="recipe-content">
@@ -106,7 +98,7 @@
                     <article class="recipe-card" data-category="pizza">
                         <a href="#" class="recipe-link">
                             <div class="recipe-image-container">
-                                <img src="/Images/searchRecipe/Pizza.jpg" alt="Pepperoni pizza with melted cheese" loading="lazy">
+                                <img src="../Images/searchRecipe/Pizza.jpg" alt="Pepperoni pizza with melted cheese" loading="lazy">
                                 <span class="recipe-category">Pizza</span>
                             </div>
                             <div class="recipe-content">
@@ -124,7 +116,7 @@
                     <article class="recipe-card" data-category="meat">
                         <a href="#" class="recipe-link">
                             <div class="recipe-image-container">
-                                <img src="/Images/searchRecipe/Steak.jpg" alt="Juicy steak with garlic butter" loading="lazy">
+                                <img src="../Images/searchRecipe/Steak.jpg" alt="Juicy steak with garlic butter" loading="lazy">
                                 <span class="recipe-category">Meat</span>
                             </div>
                             <div class="recipe-content">
@@ -142,7 +134,7 @@
                     <article class="recipe-card" data-category="pasta">
                         <a href="#" class="recipe-link">
                             <div class="recipe-image-container">
-                                <img src="/Images/searchRecipe/Pasta.jpg" alt="Creamy mushroom pasta in a white bowl" loading="lazy">
+                                <img src="../Images/searchRecipe/Pasta.jpg" alt="Creamy mushroom pasta in a white bowl" loading="lazy">
                                 <span class="recipe-category">Pasta</span>
                             </div>
                             <div class="recipe-content">
@@ -171,7 +163,7 @@
 
     <footer class="main-footer" id="main-footer">
         <script>
-            fetch('/footer.html')
+            fetch('../footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('main-footer').innerHTML = data;
@@ -179,6 +171,6 @@
         </script>
     </footer>
 
-    <script src="/searchRecipes.js"></script>
+    <script src="../searchRecipes.js"></script>
 </body>
 </html> 

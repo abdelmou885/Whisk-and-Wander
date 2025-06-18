@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Whisk & Wondeer</title>
-  <link rel="stylesheet" href="../index-styles.css" />
+  <link rel="stylesheet" href="../Public/index-styles.css" />
 </head>
 <body>
   <header>
     <div id="header-container">
       <script>
       // Load header
-      fetch("../header.html")
+      fetch("./header.html")
           .then(response => response.text())
           .then(html => {
               document.getElementById('header-container').innerHTML = html;
@@ -76,7 +76,7 @@
       <h2>Ready to start cooking delicious meals?</h2>
       <p>Browse our collection of recipes and get inspired to create amazing dishes in your own kitchen.</p>
     </div>
-    <button>Explore Recipes</button>
+    <a href="./searchRecipe.html"><button>Explore Recipes</button></a>
   </section>
 
   <div class="container">
@@ -178,7 +178,7 @@
   </div>
   <footer class="main-footer" id="main-footer">
     <script>
-        fetch("../footer.html")
+        fetch("./footer.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById('main-footer').innerHTML = data;

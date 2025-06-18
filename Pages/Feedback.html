@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - Whisk & Wander</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../Public/style.css">
 </head>
 <body>
     <header>
         <div id="header-container">
             <script>
             // Load header
-            fetch("../header.html")
+            fetch("./header.html")
                 .then(response => response.text())
                 .then(html => {
                     document.getElementById('header-container').innerHTML = html;
@@ -21,19 +21,6 @@
                 });
             </script>
         </div>
-        <!-- <div class="top-nav">
-            <img src="images/logo.png" alt="Whisk & Wander Logo" class="logo">
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="#">Categories</a>
-                <a href="#">Features</a>
-                <a href="#">About</a>
-            </nav>
-            <div class="Logins">
-                <button class="login">Sign In</button>
-                <button class="register">Sign Up</button>
-            </div>
-        </div> -->
     </header>
 
     <main class="feedback-container">
@@ -107,7 +94,7 @@
 
     <footer class="main-footer" id="main-footer">
         <script>
-            fetch('/footer.html')
+            fetch('./footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('main-footer').innerHTML = data;

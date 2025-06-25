@@ -47,6 +47,7 @@
                         <button class="filter-btn" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="meat">Meat</button>
                         <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+                        <button class="filter-btn" data-filter="sweets">Sweets</button>
                     </div>
                 </div>
             </div>
@@ -200,6 +201,7 @@
             function filterRecipes() {
                 const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
                 const currentSearch = searchInput?.value.trim().toLowerCase() || '';
+                let hasVisibleRecipes = false;
                 
                 if (recipeCards) {
                     recipeCards.forEach(card => {
@@ -210,14 +212,18 @@
                         const matchesFilter = activeFilter === "all" || recipeCategory === activeFilter;
                         const matchesSearch = !currentSearch || recipeTitle.includes(currentSearch);
                         
-                        card.style.display = matchesFilter && matchesSearch ? "block" : "none";
+                        const shouldShow = matchesFilter && matchesSearch;
+                        card.style.display = shouldShow ? "block" : "none";
+                        
+                        if (shouldShow) {
+                            hasVisibleRecipes = true;
+                        }
                     });
-            
-                    // Show "no results" message if needed
-                    const visibleRecipes = document.querySelectorAll('.recipe-card[style="display: block"]');
+
+                    // Show/hide "no results" message
                     const noResultsMsg = document.querySelector('.no-results');
                     
-                    if (visibleRecipes.length === 0 && document.querySelector('.recipes-grid')) {
+                    if (!hasVisibleRecipes && document.querySelector('.recipes-grid')) {
                         if (!noResultsMsg) {
                             const msg = document.createElement('div');
                             msg.className = 'no-results';
@@ -252,7 +258,7 @@
                 });
             }
 
-            // Optional: Add live search as user types
+            // Add live search as user types (optional)
             if (searchInput && document.querySelector('.recipes-grid')) {
                 searchInput.addEventListener('input', function() {
                     filterRecipes();
@@ -263,7 +269,6 @@
                 const searchValue = searchInput?.value.trim() || '';
                 const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
                 
-                // Different behavior for index page vs search page
                 if (window.location.pathname.includes('searchRecipe')) {
                     // On search page - update URL without reloading
                     const url = new URL(window.location);
@@ -287,115 +292,6 @@
             }
         });
     </script>
-    
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const filterButtons = document.querySelectorAll(".filter-btn");
-            const recipeCards = document.querySelectorAll(".recipe-card");
-            const searchForm = document.querySelector(".search-form");
-            const searchInput = document.getElementById("recipe-search");
-
-            // Function to filter recipes by category
-            function filterRecipes(category) {
-                recipeCards.forEach(card => {
-                    const recipeCategory = card.getAttribute("data-category");
-                    if (category === "all" || recipeCategory === category) {
-                        card.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            }
-
-            // Function to search recipes by title
-            function searchRecipes(query) {
-                const lowerQuery = query.toLowerCase();
-                recipeCards.forEach(card => {
-                    const title = card.querySelector("h3").textContent.toLowerCase();
-                    if (title.includes(lowerQuery)) {
-                        card.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            }
-
-            // Function to apply both filters and search
-            function applyFilters() {
-                const activeFilter = document.querySelector(".filter-btn.active").getAttribute("data-filter");
-                const searchQuery = searchInput.value.trim();
-                
-                recipeCards.forEach(card => {
-                    const recipeCategory = card.getAttribute("data-category");
-                    const title = card.querySelector("h3").textContent.toLowerCase();
-                    
-                    // Show if matches both filter and search (if any)
-                    const matchesFilter = activeFilter === "all" || recipeCategory === activeFilter;
-                    const matchesSearch = !searchQuery || title.includes(searchQuery.toLowerCase());
-                    
-                    card.style.display = matchesFilter && matchesSearch ? "block" : "none";
-                });
-            }
-
-            // Filter button click handler
-            filterButtons.forEach(btn => {
-                btn.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    document.querySelector(".filter-btn.active").classList.remove("active");
-                    btn.classList.add("active");
-                    
-                    // Update URL with filter parameter
-                    const url = new URL(window.location);
-                    url.searchParams.set('category', btn.getAttribute("data-filter"));
-                    window.history.pushState({}, '', url);
-                    
-                    applyFilters();
-                });
-            });
-
-            // Search form submit handler
-            searchForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const searchQuery = searchInput.value.trim();
-                
-                // Update URL with search parameter
-                const url = new URL(window.location);
-                if (searchQuery) {
-                    url.searchParams.set('search', searchQuery);
-                } else {
-                    url.searchParams.delete('search');
-                }
-                window.history.pushState({}, '', url);
-                
-                applyFilters();
-            });
-
-            // Search input keyup handler for live search (optional)
-            searchInput.addEventListener("keyup", () => {
-                applyFilters();
-            });
-
-            // Initialize from URL parameters
-            const params = new URLSearchParams(window.location.search);
-            const initialCategory = params.get("category") || "all";
-            const initialSearch = params.get("search") || "";
-            
-            // Set initial active filter button
-            const initialBtn = document.querySelector(`.filter-btn[data-filter="${initialCategory}"]`) || 
-                            document.querySelector(`.filter-btn[data-filter="all"]`);
-            if (initialBtn) {
-                initialBtn.classList.add("active");
-            }
-            
-            // Set initial search value
-            if (initialSearch) {
-                searchInput.value = initialSearch;
-            }
-            
-            // Apply initial filters
-            applyFilters();
-        });
-    </script> -->
 
 </body>
 </html>

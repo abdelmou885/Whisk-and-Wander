@@ -1,0 +1,86 @@
+/* --- General Page Styling --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+main.policy-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+/* --- Navigation Styling --- */
+.policy-nav {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.policy-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.policy-nav a {
+  text-decoration: none;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.policy-nav a:hover {
+  background-color: #bee5eb;
+}
+
+/* --- Section Styling --- */
+.policy-page section {
+  padding: 2rem 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.policy-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2f4f4f;
+}
+
+.policy-page h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  color: #444;
+}
+
+.policy-page ul {
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.policy-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .policy-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  main.policy-page {
+    padding: 1rem;
+  }
+}

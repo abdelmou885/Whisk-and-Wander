@@ -37,14 +37,45 @@
                   <span class="visually-hidden">Search</span>
               </button>
           </form>
-          <div class="search-filters">
-              <button class="filter-btn active" data-filter="all">All</button>
-              <button class="filter-btn" data-filter="meat">Meat</button>
-              <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
-              <button class="filter-btn" data-filter="vegan">Vegan</button>
-              <button class="filter-btn" data-filter="pasta">Pasta</button>
-          </div>
-      </div>
+        <div class="search-filters">
+          <button class="filter-btn active" onclick="navigateToSearch('all')">All</button>
+          <button class="filter-btn" onclick="navigateToSearch('meat')">Meat</button>
+          <button class="filter-btn" onclick="navigateToSearch('vegetarian')">Vegetarian</button>
+          <button class="filter-btn" onclick="navigateToSearch('pasta')">Pasta</button>
+        </div>
+
+      <script>
+        function navigateToSearch(category) {
+            // Update the URL to include the category parameter
+            window.location.href = `searchRecipes.html?category=${category}`;
+        }
+
+        // Optional: If you want to maintain the current filtering on the index page
+        document.addEventListener("DOMContentLoaded", function() {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const recipeCards = document.querySelectorAll(".recipe-card");
+            
+            // Only run this on the search page, not index
+            if (window.location.pathname.includes('searchRecipes')) {
+                const params = new URLSearchParams(window.location.search);
+                const category = params.get("category") || "all";
+                
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                    if (btn.dataset.filter === category) {
+                        btn.classList.add("active");
+                    }
+                });
+                
+                recipeCards.forEach(card => {
+                    card.style.display = (category === "all" || card.dataset.category === category) 
+                        ? "block" 
+                        : "none";
+                });
+            }
+        });
+      </script>
+    </div>
   </header>
 
   <section class="categories">
@@ -157,7 +188,7 @@
       </div>
     </section>
 
-    <section class="contact-us">
+    <section class="contact-us" id="contact-us">
       <h2>Contact Us</h2>
       <div class="contact-boxes">
         <div class="contact-box">
@@ -185,5 +216,6 @@
             });
       </script>
   </footer>
+
 </body>
 </html>

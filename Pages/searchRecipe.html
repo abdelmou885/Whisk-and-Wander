@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +47,6 @@
                         <button class="filter-btn active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="meat">Meat</button>
                         <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
-                        <button class="filter-btn" data-filter="vegan">Vegan</button>
                         <button class="filter-btn" data-filter="pasta">Pasta</button>
                     </div>
                 </div>
@@ -171,6 +169,50 @@
         </script>
     </footer>
 
-    <script src="../searchRecipes.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const recipeCards = document.querySelectorAll(".recipe-card");
+
+            function filterRecipes(category) {
+                recipeCards.forEach(card => {
+                    const recipeCategory = card.getAttribute("data-category");
+                    if (category === "all" || recipeCategory === category) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    document.querySelector(".filter-btn.active").classList.remove("active");
+                    btn.classList.add("active");
+                    const category = btn.getAttribute("data-filter");
+                    filterRecipes(category);
+                    
+                    // Update URL without reloading
+                    const url = new URL(window.location);
+                    url.searchParams.set('category', category);
+                    window.history.pushState({}, '', url);
+                });
+            });
+
+            // Get ?category= from the URL if present
+            const params = new URLSearchParams(window.location.search);
+            const initialCategory = params.get("category") || "all";
+            
+            // Set initial active button
+            const initialBtn = document.querySelector(`.filter-btn[data-filter="${initialCategory}"]`) || 
+                             document.querySelector(`.filter-btn[data-filter="all"]`);
+            if (initialBtn) {
+                initialBtn.classList.add("active");
+                filterRecipes(initialCategory);
+            }
+        });
+
+    </script>
 </body>
-</html> 
+</html>

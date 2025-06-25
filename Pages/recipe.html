@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Recipe - Whisk & Wander</title>
+    <link rel="stylesheet" href="../Public/style.css" />
+</head>
+<body>
+    <header>
+        <div id="header-container"></div>
+    </header>
+
+    <main>
+        <section class="recipe-header">
+            <div class="recipe-image">
+                <img id="recipe-image" src="" alt="Recipe image">
+            </div>
+            <div class="recipe-intro">
+                <h1 id="recipe-title">Recipe Title</h1>
+                <p id="recipe-description">Recipe description will appear here.</p>
+            </div>
+        </section>
+
+        <section class="recipe-meta">
+            <div class="content-list">ContentList1</div>
+            <div class="recipe-times">
+                <div class="time-block">
+                    <h4>Prep Time:</h4>
+                    <p id="prep-time">-</p>
+                </div>
+                <div class="time-block">
+                    <h4>Cook Time:</h4>
+                    <p id="cook-time">-</p>
+                </div>
+                <div class="time-block">
+                    <h4>Total Time:</h4>
+                    <p id="total-time">-</p>
+                </div>
+                <div class="time-block">
+                    <h4>Servings:</h4>
+                    <p id="servings">-</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="recipe-servings">
+            <p>Original recipe (1X) yields <span id="servings-count">-</span></p>
+        </div>
+
+        <section class="ingredients">
+            <h2>Ingredients</h2>
+            <ul class="ingredient-checklist" id="ingredients-list"></ul>
+        </section>
+
+        <section class="directions">
+            <h2>Directions</h2>
+            <div class="steps">
+                <h2>Steps</h2>
+                <ol id="steps-list"></ol>
+            </div>
+        </section>
+
+        <footer class="main-footer" id="main-footer"></footer>
+    </main>
+
+    <script>
+         let recipes = {};
+
+        // Load external files
+        fetch("./header.html").then(r => r.text()).then(html => 
+            document.getElementById('header-container').innerHTML = html);
+        
+        fetch('./footer.html').then(r => r.text()).then(html => 
+            document.getElementById('main-footer').innerHTML = html);
+
+        // Load recipes from external file
+        fetch('../Public/recipesOBJ.js').then(r => r.text()).then(text => {
+            console.log('Loaded recipes:', recipes);
+            eval(text);
+            recipes = window.recipes;
+            console.log('Loaded recipes:', recipes);
+            showRecipe();
+        });
+
+        function showRecipe() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const recipeKey = urlParams.get('recipe');
+            const recipe = recipes[recipeKey];
+            
+            if (!recipe) {
+                document.getElementById('recipe-title').textContent = 'Recipe Not Found';
+                return;
+            }
+
+            // Update page content
+            document.getElementById('page-title').textContent = recipe.title + ' - Whisk & Wander';
+            document.getElementById('recipe-image').src = recipe.image || '';
+            document.getElementById('recipe-title').textContent = recipe.title;
+            document.getElementById('recipe-description').textContent = recipe.description;
+            document.getElementById('prep-time').textContent = recipe.prepTime;
+            document.getElementById('cook-time').textContent = recipe.cookTime;
+            document.getElementById('total-time').textContent = recipe.totalTime;
+            document.getElementById('servings').textContent = recipe.servings;
+            document.getElementById('servings-count').textContent = recipe.servings;
+            
+            // Add ingredients
+            const ingredientsList = document.getElementById('ingredients-list');
+            ingredientsList.innerHTML = '';
+            Object.values(recipe.ingredients).forEach((ingredient, i) => {
+                ingredientsList.innerHTML += `<li><input type="checkbox" id="ing${i}"> <label for="ing${i}">${ingredient}</label></li>`;
+            });
+            
+            // Add steps
+            const stepsList = document.getElementById('steps-list');
+            stepsList.innerHTML = '';
+            Object.values(recipe.steps).forEach((step, i) => {
+                stepsList.innerHTML += `<li><h3>Step ${i + 1}</h3><p>${step}</p></li>`;
+            });
+        }
+    </script>
+</body>
+</html>

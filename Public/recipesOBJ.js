@@ -1,6 +1,7 @@
-const recipes = {
+window.recipes = {
   "crispy-chicken-burger": {
     title: "Crispy Chicken Burger",
+    image: "../Images/SearchRecipe/Burger.jpg",
     description: "Juicy chicken tenders coated in a flavorful, crispy coating, layered with melted cheese, fresh lettuce, red onions, jalapeños, and creamy coleslaw, all served on a toasted brioche bun.",
     prepTime: "20 mins",
     cookTime: "15 mins",
@@ -45,6 +46,7 @@ const recipes = {
 
   "pepperoni-pizza": {
     title: "Pepperoni Pizza",
+    image: "../Images/searchRecipe/Pizza.jpg",
     description: "A classic crowd-pleaser, this homemade pepperoni pizza features gooey mozzarella, a crisp crust, zesty sauce, and a generous helping of spicy pepperoni slices.",
     prepTime: "10 mins",
     cookTime: "15 mins",
@@ -78,6 +80,7 @@ const recipes = {
 
   "steak-with-garlic-butter": {
     title: "Steak with Garlic Butter",
+    image: "../Images/searchRecipe/Steak.jpg",
     description: "Perfectly seared sirloin steaks topped with rich garlic butter make for a simple, elegant, and absolutely mouthwatering meal.",
     prepTime: "20 mins",
     cookTime: "10 mins",
@@ -100,6 +103,7 @@ const recipes = {
 
   "creamy-mushroom-pasta": {
     title: "Creamy Mushroom Pasta",
+    image: "../Images/searchRecipe/Pasta.jpg",
     description: "A luscious pasta dish featuring tender mushrooms in a velvety garlic cream sauce, finished with parmesan and a hint of wine.",
     prepTime: "8 mins",
     cookTime: "12 mins",
@@ -132,6 +136,7 @@ const recipes = {
 
   "organic-fruit-salad": {
     title: "Organic Fruit Salad",
+    image: "../Images/searchRecipe/fruits.jpg",
     description: "This refreshing fruit salad bursts with natural sweetness and is topped with a light citrus glaze that brings all the vibrant flavors together.",
     prepTime: "25 mins",
     cookTime: "5 mins",
@@ -161,3 +166,4 @@ const recipes = {
     }
   }
 };
+

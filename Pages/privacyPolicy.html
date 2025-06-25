@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Legal Policies | Whisk & Wondeer</title>
+  <link rel="stylesheet" href="../Public/privacyPolicy.css" />
+</head>
+<body>
+  <div id="header-container">
+    <script>
+      fetch("./header.html")
+        .then(res => res.text())
+        .then(html => document.getElementById('header-container').innerHTML = html);
+    </script>
+  </div>
+
+  <main class="policy-page">
+    <nav class="policy-nav">
+      <ul>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="#cookies-policy">Cookies Policy</a></li>
+      </ul>
+    </nav>
+
+    <section id="privacy-policy">
+        <h1>Privacy Policy</h1>
+        <p>At Whisk & Wondeer, your privacy is important to us...</p>
+        <h2>Information We Collect</h2>
+        <ul>
+            <li>Personal identification (e.g. name, email)</li>
+            <li>Browser cookies and analytics data</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use your information to enhance user experience, personalize content, and communicate updates.</p>
+
+        <h2>Third-Party Sharing</h2>
+        <p>We do not share your data with third parties except to provide essential services (e.g. hosting providers).</p>
+
+        <h2>Contact</h2>
+        <p>If you have any questions, please contact us at privacy@whiskandwondeer.com.</p>
+    </section>
+
+    <hr/>
+
+    <section id="terms-conditions">
+        <h1>Terms and Conditions</h1>
+        <p>By accessing and using Whisk & Wondeer, you agree to the following terms...</p>
+
+        <h2>Use of Site</h2>
+        <p>You agree to use our content for personal, non-commercial purposes only.</p>
+
+        <h2>User Contributions</h2>
+        <p>All recipe submissions or comments must be respectful and non-infringing on others’ rights.</p>
+
+        <h2>Disclaimer</h2>
+        <p>We provide content "as is" without warranties of any kind.</p>
+
+        <h2>Changes</h2>
+        <p>We reserve the right to modify these terms at any time. Continued use constitutes acceptance.</p>
+    </section>
+
+    <hr/>
+
+    <section id="cookies-policy">
+        <h1>Cookies Policy</h1>
+        <p>This Cookies Policy explains what cookies are and how we use them...</p>
+      
+        <h2>What Are Cookies?</h2>
+        <p>Cookies are small text files stored on your device to help improve your experience on our website.</p>
+
+        <h2>How We Use Cookies</h2>
+        <ul>
+            <li>To remember preferences and settings</li>
+            <li>To analyze website usage through analytics</li>
+        </ul>
+
+        <h2>Your Choices</h2>
+        <p>You can disable cookies in your browser settings. However, some features may not work properly.</p>
+    </section>
+  </main>
+
+  <footer id="main-footer">
+    <script>
+      fetch("./footer.html")
+        .then(res => res.text())
+        .then(html => document.getElementById('main-footer').innerHTML = html);
+    </script>
+  </footer>
+</body>
+</html>

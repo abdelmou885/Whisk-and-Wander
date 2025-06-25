@@ -41,6 +41,7 @@
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="meat">Meat</button>
         <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+        <button class="filter-btn" data-filter="sweets">Sweets</button>
     </div>
 </div>
       <script>
@@ -78,19 +79,38 @@
   </header>
 
   <section class="categories">
-    <div class="cat-card">
-      <img src="https://cdn.pixabay.com/photo/2019/07/25/01/23/beef-4361462_1280.jpg" alt="Meat Lovers" />
-      <p>Meat Lovers' Paradise!</p>
-    </div>
-    <div class="cat-card">
-      <img src="https://plus.unsplash.com/premium_photo-1716584036745-5f5049e3e822?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dessert" />
-      <p>Life is short, make it sweet!</p>
-    </div>
-    <div class="cat-card">
-      <img src="https://plus.unsplash.com/premium_photo-1713087472522-9ebe85e736bf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Healthy Food" />
-      <p>Eat Green, Feel Clean!</p>
-    </div>
+      <div class="cat-card">
+          <a href="searchRecipe.html" data-filter="meat" aria-label="View meat recipes" class="category-link">
+              <img src="https://cdn.pixabay.com/photo/2019/07/25/01/23/beef-4361462_1280.jpg" alt="Meat Lovers">
+          </a>
+          <p>Meat Lovers' Paradise!</p>
+      </div>
+      <div class="cat-card">
+          <a href="searchRecipe.html" data-filter="sweets" aria-label="View dessert recipes" class="category-link">
+              <img src="https://plus.unsplash.com/premium_photo-1716584036745-5f5049e3e822?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dessert">
+          </a>
+          <p>Life is short, make it sweet!</p>
+      </div>
+      <div class="cat-card">
+          <a href="searchRecipe.html" data-filter="vegetarian" aria-label="View vegetarian recipes" class="category-link">
+              <img src="https://plus.unsplash.com/premium_photo-1713087472522-9ebe85e736bf?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Healthy Food"> 
+          </a>
+          <p>Eat Green, Feel Clean!</p>
+      </div>
   </section>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Handle category card clicks
+          document.querySelectorAll('.category-link').forEach(link => {
+              link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  const filter = this.getAttribute('data-filter');
+                  window.location.href = `searchRecipe.html?category=${filter}`;
+              });
+          });
+      });
+  </script>
 
   <section class="features-section">
     <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fruits" />
@@ -120,18 +140,15 @@
         <p>Bookmark your favorite recipes to easily access them later.</p>
       </div>
       <div class="intro-image">
-        <img src="https://cdn.pixabay.com/photo/2021/07/06/11/52/muesli-6391402_1280.jpg"
-        
-        
-        alt=" Image" />
+        <img src="https://cdn.pixabay.com/photo/2021/07/06/11/52/muesli-6391402_1280.jpg" alt=" Image" />
       </div>
     </section>
 
     <section class="discover">
       <div class="discover-text">
         <h2>Discover the Power of Our Products</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-        <button class="main-button">Main section</button>
+        <p>Make cooking easier and more delicious with our products! Cook with confidence and bring your favorite recipes to life—the simple way.</p>
+        <button class="main-button" href="searchRecipe.html">Recipes</button>
       </div>
       <div class="steps">
         <div class="step step-1">
@@ -220,21 +237,33 @@
         const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
         
         // Navigate to search page with parameters
-        if (searchTerm) {
-            window.location.href = `searchRecipe.html?search=${encodeURIComponent(searchTerm)}&category=${activeFilter}`;
-        } else {
-            window.location.href = `searchRecipe.html?category=${activeFilter}`;
-        }
+        navigateToSearch(activeFilter, searchTerm);
     });
 
-    // Update filter button click handlers
+    // Filter button click handler
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             document.querySelector('.filter-btn.active').classList.remove('active');
             this.classList.add('active');
+            
+            // Get current search term
+            const searchTerm = document.getElementById('recipe-search').value.trim();
+            const activeFilter = this.getAttribute('data-filter');
+            
+            // Navigate to search page with parameters
+            navigateToSearch(activeFilter, searchTerm);
         });
     });
+
+    // Function to navigate to search page with parameters
+    function navigateToSearch(category, searchTerm = '') {
+        let url = `searchRecipe.html?category=${category}`;
+        if (searchTerm) {
+            url += `&search=${encodeURIComponent(searchTerm)}`;
+        }
+        window.location.href = url;
+    }
   </script>
 </body>
 </html>

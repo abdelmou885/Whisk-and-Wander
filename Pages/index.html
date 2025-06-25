@@ -23,9 +23,27 @@
     </div>
 
     <div class="header-top">
-      <h1>Welcome to Whisk & Wondeer</h1>
+      <h1>Welcome to Whisk & Wander</h1>
       <p>Bringing flavors to life, one recipe at a time — because every meal tells a story.</p>
       <div class="search-bar-container">
+    <form role="search" class="search-form" id="search-form">
+        <label for="recipe-search" class="visually-hidden">Search recipes</label>
+        <input type="search" id="recipe-search" name="search" placeholder="Search for recipes..." aria-label="Search through recipes">
+        <button type="submit" class="search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="visually-hidden">Search</span>
+        </button>
+    </form>
+    <div class="search-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="meat">Meat</button>
+        <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+    </div>
+</div>
+      <!-- <div class="search-bar-container">
           <form role="search" class="search-form">
               <label for="recipe-search" class="visually-hidden">Search recipes</label>
               <input type="search" id="recipe-search" name="search" placeholder="Search for recipes..." aria-label="Search through recipes">
@@ -41,13 +59,12 @@
           <button class="filter-btn active" onclick="navigateToSearch('all')">All</button>
           <button class="filter-btn" onclick="navigateToSearch('meat')">Meat</button>
           <button class="filter-btn" onclick="navigateToSearch('vegetarian')">Vegetarian</button>
-          <button class="filter-btn" onclick="navigateToSearch('pasta')">Pasta</button>
-        </div>
+        </div> -->
 
       <script>
         function navigateToSearch(category) {
             // Update the URL to include the category parameter
-            window.location.href = `searchRecipes.html?category=${category}`;
+            window.location.href = `searchRecipe.html?category=${category}`;
         }
 
         // Optional: If you want to maintain the current filtering on the index page
@@ -56,7 +73,7 @@
             const recipeCards = document.querySelectorAll(".recipe-card");
             
             // Only run this on the search page, not index
-            if (window.location.pathname.includes('searchRecipes')) {
+            if (window.location.pathname.includes('searchRecipe')) {
                 const params = new URLSearchParams(window.location.search);
                 const category = params.get("category") || "all";
                 
@@ -213,6 +230,29 @@
             });
       </script>
   </footer>
+  <script>
+    // Handle search form submission
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchTerm = document.getElementById('recipe-search').value.trim();
+        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        
+        // Navigate to search page with parameters
+        if (searchTerm) {
+            window.location.href = `searchRecipe.html?search=${encodeURIComponent(searchTerm)}&category=${activeFilter}`;
+        } else {
+            window.location.href = `searchRecipe.html?category=${activeFilter}`;
+        }
+    });
 
+    // Update filter button click handlers
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.filter-btn.active').classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+  </script>
 </body>
 </html>

@@ -44,10 +44,9 @@
                         </button>
                     </form>
                     <div class="search-filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="meat">Meat</button>
                         <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
-                        <button class="filter-btn" data-filter="pasta">Pasta</button>
                     </div>
                 </div>
             </div>
@@ -75,11 +74,11 @@
                         </a>
                     </article>
 
-                    <article class="recipe-card" data-category="organic">
+                    <article class="recipe-card" data-category="vegetarian">
                         <a href="./recipe.html?recipe=organic-fruit-salad" class="recipe-link">
                             <div class="recipe-image-container">
                                 <img src="../Images/searchRecipe/fruits.jpg" alt="Colorful organic fruit salad in a bowl" loading="lazy">
-                                <span class="recipe-category">Organic</span>
+                                <span class="recipe-category">Vegetarian</span>
                             </div>
                             <div class="recipe-content">
                                 <h3>Organic Fruit Salad</h3>
@@ -93,11 +92,11 @@
                         </a>
                     </article>
 
-                    <article class="recipe-card" data-category="pizza">
+                    <article class="recipe-card" data-category="meat">
                         <a href="./recipe.html?recipe=pepperoni-pizza" class="recipe-link">
                             <div class="recipe-image-container">
                                 <img src="../Images/searchRecipe/Pizza.jpg" alt="Pepperoni pizza with melted cheese" loading="lazy">
-                                <span class="recipe-category">Pizza</span>
+                                <span class="recipe-category">Meat</span>
                             </div>
                             <div class="recipe-content">
                                 <h3>Pepperoni Pizza</h3>
@@ -129,11 +128,11 @@
                         </a>
                     </article>
 
-                    <article class="recipe-card" data-category="pasta">
+                    <article class="recipe-card" data-category="vegetarian">
                         <a href="./recipe.html?recipe=creamy-mushroom-pasta" class="recipe-link">
                             <div class="recipe-image-container">
                                 <img src="../Images/searchRecipe/Pasta.jpg" alt="Creamy mushroom pasta in a white bowl" loading="lazy">
-                                <span class="recipe-category">Pasta</span>
+                                <span class="recipe-category">Vegetarian</span>
                             </div>
                             <div class="recipe-content">
                                 <h3>Creamy Mushroom Pasta</h3>
@@ -171,9 +170,132 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Get URL parameters
+            const params = new URLSearchParams(window.location.search);
+            const searchTerm = params.get("search");
+            const category = params.get("category") || "all";
+            
+            // Get DOM elements
             const filterButtons = document.querySelectorAll(".filter-btn");
             const recipeCards = document.querySelectorAll(".recipe-card");
+            const searchForm = document.querySelector(".search-form");
+            const searchInput = document.getElementById("recipe-search");
+            
+            // Set active filter button
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+                if (btn.getAttribute("data-filter") === category) {
+                    btn.classList.add("active");
+                }
+            });
 
+            // Set search input value if there was a search
+            if (searchTerm) {
+                searchInput.value = searchTerm;
+            }
+            
+            // Filter recipes based on search and category
+            filterRecipes();
+            
+            function filterRecipes() {
+                const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
+                const currentSearch = searchInput?.value.trim().toLowerCase() || '';
+                
+                if (recipeCards) {
+                    recipeCards.forEach(card => {
+                        const recipeCategory = card.getAttribute("data-category");
+                        const recipeTitle = card.querySelector("h3").textContent.toLowerCase();
+                        
+                        // Check if matches both filter and search
+                        const matchesFilter = activeFilter === "all" || recipeCategory === activeFilter;
+                        const matchesSearch = !currentSearch || recipeTitle.includes(currentSearch);
+                        
+                        card.style.display = matchesFilter && matchesSearch ? "block" : "none";
+                    });
+            
+                    // Show "no results" message if needed
+                    const visibleRecipes = document.querySelectorAll('.recipe-card[style="display: block"]');
+                    const noResultsMsg = document.querySelector('.no-results');
+                    
+                    if (visibleRecipes.length === 0 && document.querySelector('.recipes-grid')) {
+                        if (!noResultsMsg) {
+                            const msg = document.createElement('div');
+                            msg.className = 'no-results';
+                            msg.textContent = 'No recipes found matching your search.';
+                            document.querySelector('.recipes-grid').appendChild(msg);
+                        }
+                    } else if (noResultsMsg) {
+                        noResultsMsg.remove();
+                    }
+                }
+            }
+
+            // Add event listeners for filter buttons
+            if (filterButtons) {
+                filterButtons.forEach(btn => {
+                    btn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        document.querySelector(".filter-btn.active")?.classList.remove("active");
+                        btn.classList.add("active");
+                        
+                        // Update URL with new parameters
+                        updateUrlAndFilter();
+                    });
+                });
+            }
+
+            // Add event listener for search form
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    updateUrlAndFilter();
+                });
+            }
+
+            // Optional: Add live search as user types
+            if (searchInput && document.querySelector('.recipes-grid')) {
+                searchInput.addEventListener('input', function() {
+                    filterRecipes();
+                });
+            }
+
+            function updateUrlAndFilter() {
+                const searchValue = searchInput?.value.trim() || '';
+                const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
+                
+                // Different behavior for index page vs search page
+                if (window.location.pathname.includes('searchRecipe')) {
+                    // On search page - update URL without reloading
+                    const url = new URL(window.location);
+                    if (searchValue) {
+                        url.searchParams.set('search', searchValue);
+                    } else {
+                        url.searchParams.delete('search');
+                    }
+                    url.searchParams.set('category', activeFilter);
+                    window.history.pushState({}, '', url);
+                    
+                    filterRecipes();
+                } else {
+                    // On index page - navigate to search page with parameters
+                    if (searchValue) {
+                        window.location.href = `searchRecipe.html?search=${encodeURIComponent(searchValue)}&category=${activeFilter}`;
+                    } else {
+                        window.location.href = `searchRecipe.html?category=${activeFilter}`;
+                    }
+                }
+            }
+        });
+    </script>
+    
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const recipeCards = document.querySelectorAll(".recipe-card");
+            const searchForm = document.querySelector(".search-form");
+            const searchInput = document.getElementById("recipe-search");
+
+            // Function to filter recipes by category
             function filterRecipes(category) {
                 recipeCards.forEach(card => {
                     const recipeCategory = card.getAttribute("data-category");
@@ -185,34 +307,95 @@
                 });
             }
 
+            // Function to search recipes by title
+            function searchRecipes(query) {
+                const lowerQuery = query.toLowerCase();
+                recipeCards.forEach(card => {
+                    const title = card.querySelector("h3").textContent.toLowerCase();
+                    if (title.includes(lowerQuery)) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+
+            // Function to apply both filters and search
+            function applyFilters() {
+                const activeFilter = document.querySelector(".filter-btn.active").getAttribute("data-filter");
+                const searchQuery = searchInput.value.trim();
+                
+                recipeCards.forEach(card => {
+                    const recipeCategory = card.getAttribute("data-category");
+                    const title = card.querySelector("h3").textContent.toLowerCase();
+                    
+                    // Show if matches both filter and search (if any)
+                    const matchesFilter = activeFilter === "all" || recipeCategory === activeFilter;
+                    const matchesSearch = !searchQuery || title.includes(searchQuery.toLowerCase());
+                    
+                    card.style.display = matchesFilter && matchesSearch ? "block" : "none";
+                });
+            }
+
+            // Filter button click handler
             filterButtons.forEach(btn => {
                 btn.addEventListener("click", (e) => {
                     e.preventDefault();
                     document.querySelector(".filter-btn.active").classList.remove("active");
                     btn.classList.add("active");
-                    const category = btn.getAttribute("data-filter");
-                    filterRecipes(category);
                     
-                    // Update URL without reloading
+                    // Update URL with filter parameter
                     const url = new URL(window.location);
-                    url.searchParams.set('category', category);
+                    url.searchParams.set('category', btn.getAttribute("data-filter"));
                     window.history.pushState({}, '', url);
+                    
+                    applyFilters();
                 });
             });
 
-            // Get ?category= from the URL if present
+            // Search form submit handler
+            searchForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const searchQuery = searchInput.value.trim();
+                
+                // Update URL with search parameter
+                const url = new URL(window.location);
+                if (searchQuery) {
+                    url.searchParams.set('search', searchQuery);
+                } else {
+                    url.searchParams.delete('search');
+                }
+                window.history.pushState({}, '', url);
+                
+                applyFilters();
+            });
+
+            // Search input keyup handler for live search (optional)
+            searchInput.addEventListener("keyup", () => {
+                applyFilters();
+            });
+
+            // Initialize from URL parameters
             const params = new URLSearchParams(window.location.search);
             const initialCategory = params.get("category") || "all";
+            const initialSearch = params.get("search") || "";
             
-            // Set initial active button
+            // Set initial active filter button
             const initialBtn = document.querySelector(`.filter-btn[data-filter="${initialCategory}"]`) || 
-                             document.querySelector(`.filter-btn[data-filter="all"]`);
+                            document.querySelector(`.filter-btn[data-filter="all"]`);
             if (initialBtn) {
                 initialBtn.classList.add("active");
-                filterRecipes(initialCategory);
             }
+            
+            // Set initial search value
+            if (initialSearch) {
+                searchInput.value = initialSearch;
+            }
+            
+            // Apply initial filters
+            applyFilters();
         });
+    </script> -->
 
-    </script>
 </body>
 </html>

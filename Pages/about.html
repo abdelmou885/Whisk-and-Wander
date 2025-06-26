@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Whisk & Wander</title>
+  <link rel="stylesheet" href="/Public/about.css" />
+</head>
+<body>
+  <div id="header-container">
+    <script>
+      fetch("./header.html")
+        .then(res => res.text())
+        .then(html => document.getElementById('header-container').innerHTML = html);
+    </script>
+  </div>
+
+  <main class="about-page">
+    <section class="hero-section">
+      <h1>About Whisk & Wander</h1>
+      <p>Making cooking simple, accessible, and enjoyable for everyone through easy-to-follow recipes and step-by-step guidance.</p>
+      <a href="searchRecipe.html" class="btn btn-primary">Explore Recipes</a>
+    </section>
+
+    <section class="mission-section">
+      <div class="mission-content">
+        <h2>Our Mission</h2>
+        <p>At Whisk & Wander, we believe that great cooking shouldn't be complicated. Our mission is to provide easy-to-follow recipes with clear ingredients lists and simplified steps that make cooking faster, easier, and more enjoyable.</p>
+        <p>Whether you're a beginner cook or just looking to simplify your meal preparation, we're here to guide you through every step of your culinary journey.</p>
+        <a href="searchRecipe.html" class="btn btn-secondary">Start Cooking</a>
+      </div>
+      <div class="mission-image">
+        🍳
+      </div>
+    </section>
+
+    <section class="features-section">
+      <h2>What Makes Us Different</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Simple Instructions</h3>
+          <p>Every recipe is broken down into clear, easy-to-follow steps that anyone can understand and execute.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛒</div>
+          <h3>Clear Ingredients</h3>
+          <p>No confusing measurements or hard-to-find ingredients. We focus on accessible, everyday items.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱</div>
+          <h3>Time-Saving Tips</h3>
+          <p>Learn efficient cooking techniques and shortcuts that help you prepare delicious meals in less time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Beginner Friendly</h3>
+          <p>Perfect for new cooks and busy people who want to create amazing meals without the complexity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <h2>Our Story</h2>
+      <p>Whisk & Wander was created by a passionate team of students at Furtwangen Hochschule who recognized the need for a simpler approach to cooking. As students ourselves, we understand the challenges of preparing good food with limited time, budget, and kitchen experience.</p>
+      <p>Our platform combines our love for food with our technical skills to create a resource that truly helps people cook better, faster, and with more confidence.</p>
+      <div class="university-badge">
+        🎓 Furtwangen Hochschule Students
+      </div>
+    </section>
+  </main>
+
+  <footer id="main-footer">
+    <script>
+      fetch("./footer.html")
+        .then(res => res.text())
+        .then(html => document.getElementById('main-footer').innerHTML = html);
+    </script>
+  </footer>
+</body>
+</html>

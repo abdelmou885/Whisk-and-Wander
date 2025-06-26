@@ -1,0 +1,171 @@
+.about-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 30px;
+    }
+
+    .hero-section {
+        text-align: center;
+        margin-bottom: 80px;
+        padding: 60px 0;
+        background: linear-gradient(135deg, rgba(242, 101, 34, 0.1), rgba(242, 101, 34, 0.05));
+        border-radius: 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+        font-weight: 700;
+    }
+
+    .hero-section p {
+        font-size: 1.3rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 30px;
+    }
+
+    .mission-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 80px;
+        align-items: center;
+    }
+
+    .mission-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        color: var(--dark);
+    }
+
+    .mission-content p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .mission-image {
+        background: linear-gradient(45deg, var(--orange), #ff7f50);
+        height: 400px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 4rem;
+    }
+
+    .features-section {
+        margin-bottom: 80px;
+    }
+
+    .features-section h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: var(--dark);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--orange);
+    }
+
+    .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--dark);
+    }
+
+    .feature-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .team-section {
+        background: white;
+        padding: 60px 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        color: var(--dark);
+    }
+
+    .team-section p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto 30px;
+    }
+
+    .university-badge {
+        display: inline-block;
+        background: linear-gradient(45deg, var(--orange), #ff7f50);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+        }
+
+        .mission-section {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .mission-content h2 {
+            font-size: 2rem;
+        }
+
+        .features-section h2,
+        .team-section h2 {
+            font-size: 2rem;
+        }
+
+        .top-nav {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        nav ul {
+            gap: 20px;
+        }
+    }
